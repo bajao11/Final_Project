@@ -17,15 +17,17 @@
                     <a class="navbar-brand" href="#">Project Title</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">About</a></li>
+                    <ul class="nav navbar-nav menu-crud">
+                        <li class='menu-create item'><a href="javascript:void(0)">Create New</a></li>
+                        <li class='menu-list item'><a href="javascript:void(0)">Show All</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class='menu-loading'><a href="#">Loading...</a></li>
                         <li class="menu-user dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='user-email'></span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" class='btn-logut'>Logout</a></li>
+                                <li><a href="#" class='btn-logout'>Logout</a></li>
+                                <li ><a href="#">About</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -34,34 +36,79 @@
                 </div>
             </div>
             <div class='container'>
-                <div class='row'>
-                    <div class='col-md-7 thesis-list'>
-                        <table class='table table-hover'>
-                            <thead>
-                                <tr>
-                                    <th>Year</th>
-                                    <th>Title</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class='row app-content'>
                 </div>
             </div>
         </div>
 
-        <script id="tpl-thesis-item" type="text/x-handlebars-template">
-            <tr data-id="{{Id}}">
-                <td>{{Year}}</td>
-                <td>{{Title}}</td>
-            </tr>
-        </script>
-
-
+        <!-- scripts -->
+        <!-- =================== -->
         <script src="js/jquery.js"></script>
         <script src="js/handlebars.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/app.js"></script>
+
+
+        <!-- templates -->
+        <!-- =================== -->
+        <script id="tpl-thesis-list" type="text/x-handlebars-template">
+            <div class='col-md-7'>
+                <table class='table table-hover'>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Title</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class='thesis-list'>
+                    </tbody>
+                </table>
+            </div>
+        </script>
+
+        <script id="tpl-thesis-list-item" type="text/x-handlebars-template">
+            <tr data-id="{{Id}}">
+                <td>{{Year}}</td>
+                <td>{{Title}}</td>
+                <td><a href='#'>Edit</a></td>
+            </tr>
+        </script>
+
+
+        <script id="tpl-thesis-form" type="text/x-handlebars-template">
+            <div class='col-md-7 thesis-form'>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="year-input">Year</label>
+                        <select id='year-input' name='Year' class="form-control">
+                          <option value='2013' {{#compare Year '2013'}}selected{{/compare}}>2013</option>
+                          <option value='2012' {{#compare Year '2012'}}selected{{/compare}}>2012</option>
+                          <option value='2011' {{#compare Year '2011'}}selected{{/compare}}>2011</option>
+                          <option value='2010' {{#compare Year '2010'}}selected{{/compare}}>2010</option>
+                          <option value='2009' {{#compare Year '2009'}}selected{{/compare}}>2009</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tite-input">Title</label>
+                        <input id='title-input' type="text" class="form-control" name='Title' placeholder="Enter title.." value='{{Title}}'>
+                    </div>
+                    <div class="form-group">
+                        <label for="subtite-input">Subtitle</label>
+                        <input id='subtitle-input' type="text" class="form-control" name='Subtitle' placeholder="Enter subtitle.." value='{{Subtitle}}'>
+                    </div>
+                    <div class="form-group">
+                        <label for="description-input">Description</label>
+                        <textarea id='description-input' name='Description' class="form-control" rows="3">{{Description}}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    {{#if Id}}
+                    <button class="btn btn-default">Delete</button>
+                    {{/if}}
+                </form>
+            </div>
+        </script>
+
     </body>
 </html>
+

@@ -1,6 +1,6 @@
 {
   "thesis": {
-    "Year": "^[-]?[0-9]+$",
+    "Year": "",
     "Title": "",
     "Subtitle": "",
     "Description": "",
