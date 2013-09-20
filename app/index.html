@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Learning Tailbone</title>
+</head>
+
+<body>
+  <div id="container">
+    <header></header>
+    <div id="main">
+      Hello world.<br>
+      <a href="http://pupcoetm.appspot.com/api/login?url=http://localhost:8000">login</a>
+      <a href="http://pupcoetm.appspot.com/api/logout?urlhttp://localhost:8000">logout</a>
+    </div>
+    <footer></footer>
+  </div>
+
+  <script src="jquery.js"></script>
+
+  <script type="text/javascript">
+  $.ajax({
+    method: 'GET',
+    url: 'http://pupcoetm.appspot.com/api/users/me',
+    success: function(me) {
+      console.log(me.email);
+        $.get('http://pupcoetm.appspot.com/api/thesis', {
+        }, function(){
+            console.log(arguments);
+        });
+    },
+    error: function(err) {
+      console.log('you have not authenticated');
+    }
+  })
+  </script>
+
+</body>
+</html>

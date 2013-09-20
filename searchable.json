@@ -1,0 +1,9 @@
+{
+  "thesis": {
+    "Year": "TextField",
+    "Title": "TextField",
+    "Subtitle": "TextField",
+    "Description": "TextField",
+    "Tags": "TextField"
+  }
+}
